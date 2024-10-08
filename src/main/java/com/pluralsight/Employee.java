@@ -50,6 +50,6 @@ public class Employee {
 
     // Calculates and returns that employee's gross pay based on their hours worked and pay rate
     public double getGrossPay(){
-        return hoursWorked * payRate;
+        return this.hoursWorked * this.payRate;
     }
 }
