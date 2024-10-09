@@ -51,8 +51,7 @@ public class PayrollCalculator {
 
                 // Rather than displaying your payroll report to the screen, write it to a .csv file in
                 //the following format
-                bufWriter.write(tokens[0] + "|" + tokens[1] + "|" + employee.getGrossPay() + "\n");
-
+                bufWriter.write(String.format("%s|%s|%.2f\n", tokens[0],tokens[1], employee.getGrossPay()));
 
 //                // Display the employee info
 //                System.out.printf("Employee ID: %d, Name: %s, Gross Pay: $%.2f \n",employee.getEmployeeId(),
