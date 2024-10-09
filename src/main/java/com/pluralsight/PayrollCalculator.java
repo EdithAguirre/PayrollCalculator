@@ -9,7 +9,7 @@ import java.util.Scanner;
 
 public class PayrollCalculator {
     public static void main(String[] args) {
-
+        // try-catch block to catch and handle exceptions
         try {
             // Scanner object to read file from user
             Scanner scanner = new Scanner(System.in);
@@ -25,7 +25,6 @@ public class PayrollCalculator {
             FileWriter fileWriter = new FileWriter(fileToCreate);
             BufferedWriter bufWriter = new BufferedWriter(fileWriter);
 
-
             // Create file reader and buffered reader
             FileReader fileReader = new FileReader("src/main/resources/" + fileToProcess);
             BufferedReader bufferedReader = new BufferedReader(fileReader);
@@ -38,30 +37,24 @@ public class PayrollCalculator {
             // Write the header to new payroll file
             bufWriter.write("id|name|gross pay\n");
 
-            // Read each line from the file until it is empty
+            // Read each line from the file and copy to a new file until it is empty
             String input;
             while ((input = bufferedReader.readLine()) != null) {
                 // Split each line into individual fields using the | character as the delimiter
                 tokens = input.split("\\|");
 
                 // Create a new employee object with each token
-                Employee employee = new Employee(Integer.parseInt(tokens[0]),
-                        tokens[1],Float.parseFloat(tokens[2]),
-                        Float.parseFloat(tokens[3]));
+                Employee employee = new Employee(Integer.parseInt(tokens[0]), tokens[1],
+                                Float.parseFloat(tokens[2]), Float.parseFloat(tokens[3]));
 
-                // Rather than displaying your payroll report to the screen, write it to a .csv file in
-                //the following format
+                // Rather than displaying the payroll report to the screen, write it to a .csv file
                 bufWriter.write(String.format("%s|%s|%.2f\n", tokens[0],tokens[1], employee.getGrossPay()));
-
-//                // Display the employee info
-//                System.out.printf("Employee ID: %d, Name: %s, Gross Pay: $%.2f \n",employee.getEmployeeId(),
-//                        employee.getName(), employee.getGrossPay());
             }
-
             // Close the buffered reader and buffered writer
             bufferedReader.close();
             bufWriter.close();
 
+        // To handle exceptions
         }catch(IOException e){
             e.printStackTrace();
         }
